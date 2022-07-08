@@ -32,11 +32,53 @@ import UIKit
 
 class Solution {
     func checkInclusion(_ s1: String, _ s2: String) -> Bool {
+        guard s1.count <= s2.count else {
+            return false
+        }
         
+        func allZero(_ counts: [Int]) -> Bool {
+            for i in 0 ..< 26 {
+                if counts[i] != 0 {
+                    return false
+                }
+            }
+            return true
+        }
+        
+        let chars1 = Array(s1.unicodeScalars)
+        let chars2 = Array(s2.unicodeScalars)
+//        print(chars1)
+        let len1 = chars1.count
+        let len2 = chars2.count
+        var counts = [Int](repeatElement(0, count: 26))
+        
+//        print(counts)
+        for i in 0 ..< len1 {
+            counts[Int(chars1[i].value - 97)] += 1
+//            print("1", counts)
+            counts[Int(chars2[i].value - 97)] -= 1
+//            print("2", counts)
+        }
+        print("len1      :", counts)
+        
+        if allZero(counts) { return true }
+        
+        for i in len1 ..< len2 {
+            
+            counts[Int(chars2[i].value - 97)] -= 1
+            print("char2     :", counts)
+            counts[Int(chars2[i - len1].value - 97)] += 1
+            print("char[i-len]", counts )
+            //print(counts)
+            if allZero(counts) { return true }
+        }
         return false
+        
     }
 }
 
+//i = 2
+//count[]
 let s = Solution()
 s.checkInclusion("ab", "eidbaooo")
-s.checkInclusion("ab", "eidboaoo")
+//s.checkInclusion("ab", "eidboaoo")
