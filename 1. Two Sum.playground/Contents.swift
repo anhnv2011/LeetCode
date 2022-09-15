@@ -49,7 +49,7 @@ s.twoSum([2,7,11,15], 9)
 
 //i = 0
 //num = 2
-//dict[9 -3] = nil => dict[2] = 0
+//dict[9 - 2] = nil => dict[2] = 0
 //
 //i = 1
 //num = 7
