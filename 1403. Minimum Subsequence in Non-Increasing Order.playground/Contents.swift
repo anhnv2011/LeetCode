@@ -49,10 +49,10 @@ class Solution {
         return result
     }
 }
-//let nums = [4,3,10,9,8]
-////Output: [10,9]
-//Solution().minSubsequence(nums)
-//
+let nums = [4,3,10,9,8]
+//Output: [10,9]
+Solution().minSubsequence(nums)
+
 let nums2 = [4,4,7,6,7]
 //Output: [7,7,6]
 Solution().minSubsequence(nums2)
